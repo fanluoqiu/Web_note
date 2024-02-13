@@ -8,11 +8,6 @@ print_background: true
 
 export_on_save:
   html: true
-
-toc: 
-  depth_from: 1
-  depth_to: 4
-  ordered: true
 ---
 
 # Web学习笔记
@@ -21,7 +16,8 @@ toc:
 ## 相关网站
 
 - [MDN](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web)
-- [学习进度](https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Multimedia_and_embedding/Other_embedding_technologies)
+- [CSS参考](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference)
+- [学习进度](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Combinators)
 - [HTML语法检查](https://validator.w3.org/)
 ## HTML
 
@@ -502,12 +498,264 @@ HTML是一种由不同元素组成的标记语言，应用于文本，赋予文�
 
 
 
+## CSS
+
+### 前言
+CSS （Cascading Style Sheets，层叠样式表）是用来控制网页在浏览器中的显示外观的声明式语言。浏览器会根据 CSS 的样式定义将其选定的元素显示为恰当的形式。一条 CSS 的样式定义包括属性和属性值，它们共同决定网页的外观。
+
+### 入门前知识
+
+#### 调用CSS
+假设现在需要调用样式表`test2_style.css`,只需在HTML中`<head>`元素内使用<Link>元素：
+
+```html
+ <link href="test2_style.css" rel="stylesheet">
+```
+属性 `rel`让浏览器知道有 CSS 文档存在，属性 `href` 指定 CSS 文件的位置。
+#### CSS的语法
+语法由一个选择器（selector）起头。它选择了我们将要用来添加样式的 HTML 元素。在这个例子中我们为一级标题（主标题`<h1>` 添加样式,在大括号内部定义一个或多个形式为`属性：值`的声明。
+*例1：* <a id="CSS的语法"></a>
+```css
+/* test2_style.css */
+h1{
+    color: red;
+}
+```
+```html
+<!-- html文件 -->
+<!doctype html> 
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8" />
+        <title>测试2</title>
+        <!-- 引用样式表test2_style.css -->
+        <link href="test2_style.css" rel="stylesheet">   
+    </head>
+    <body>
+        <h1>CSS测试</h1>
+        <p>CSS用于定义网页样式</p>
+    </body>
+</html>
+
+```
+
+*例1输出：*
+<center>
+  <img src="Images/image-4.png">
+</center>
+
+### 选择器分类
+#### 元素选择器
+指直接匹配 HTML 元素的选择器（见<a href="#CSS的语法">例1</a>）
+
+#### 伪元素选择器
+其表现为往标记文本中加入全新的 HTML 元素一样，和伪类相似。
+常用伪元素：
+
+`::before`（`::after`）- 常通过 content 属性来为一个元素添加修饰性的内容。此元素默认为行内元素。
+
+
+#### 类选择器
+使用元素选择器会导致同一个元素下的内容都一个样式，不能满足多样化设计，我们可以给 HTML 元素加个类名（class），再选中那个类名：
+
+*例2：* <a id="CSS的语法例2"></a>
+```html
+<p calss="class1">这是文本</p>
+```
+在CSS中，只需要在选择器前加上小数点即可：
+```css
+.class1{
+  font-weight: bold;
+}
+```
+如果多个选择器的样式相同，可用逗号（“,”）连接，进行选择器多选：
+
+```css
+h1,
+h2,
+p.class1{
+
+}
+```
+
+#### 伪类选择器(状态选择器)
+状态选择器（也称为伪类选择器）在CSS中用于定义元素的特定状态下的样式。这些状态可以是用户与元素交互时的状态，如悬停、聚焦、点击等。
+
+常用的状态选择器有：
+`:hover` - 当用户鼠标悬停在元素上时，应用的样式。
+`:active` - 当元素被点击时，应用的样式。
+`:focus` - 当元素获得焦点时（例如，通过点击或使用键盘导航），应用的样式。
+`:visited` - 仅用于链接，当链接已被访问时，应用的样式。
+`:link` - 仅用于未被访问的链接。
+`:checked` - 用于单选按钮、复选框等输入元素，当元素被选中时，应用的样式。
+`:disabled` - 当元素被禁用时，应用的样式。
+
+`:first-child`- 表示在一组兄弟元素中的第一个元素。
+
+#### 组合选择器（交集选择器）
+就是两个不同的选择器一起用。在<a href="#CSS的语法例2">例2</a>中，若要选择使用类`calss1`的所有元素`<p>`，则应该写成：
+```css
+p.class1{
+    font-weight: bold;
+}
+```
+
+#### 后代选择器与子代选择器
+假设仅选择嵌套在`<li>`元素内的`<em>`我们可以使用一个称为包含选择符的选择器（后代选择器），它只是单纯地在两个选择器之间加上一个空格。子代选择器只能选择元素的子代，而他的孙代、曾孙不能被选上，后代选择器可以选子代、孙代、曾孙的元素。
+
+*例：*
+```html
+<!doctype html> 
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <title>test3:后代选择器与子代选择器的区别</title>
+        <link href="test3.css" rel="stylesheet">
+    </head>
+    <body>
+        <h1>水果种类</h1>
+
+        <p>下面是一部分水果及常见品种</p>
+        <ol>
+            <li>苹果</li>
+                <ul>
+                    <li>红富士苹果</li>
+                    <li>金冠苹果</li>
+                    <li>洛川苹果</li>
+                </ul>
+            <li>西瓜</li>
+            <li>葡萄</li>
+            <li>梨子</li>
+                <ul>
+                    <li>丰水梨</li>
+                    <li>圆黄梨</li>
+                    <li>秋月梨</li>
+                </ul>
+        </ol>
+    </body>
+
+</html>
+```
+
+```css
+/* 后代选择器 */
+oi em{
+  color: rebeccapurple;
+}
+
+
+/* 子代选择器 */
+oi > em{
+  color: rebeccapurple;
+}
+```
+效果如下
+
+
+<table>
+  <tr>
+      <td><img src="Images/image-5.png"  ></td>
+      <td><img src="Images/image-6.png"  ></td>
+  </tr>
+  
+  <tr>
+      <td><center>图1 后代选择器</center></td>
+      <td><center>图2 子代选择器</center></td>
+  </tr>
+</table>
+
+
+#### 兄弟选择器
+
+##### 相邻兄弟选择器
+它选择紧接在另一个元素之后的元素，且两者有相同的父元素，只有当element2紧跟在element1后面时，element2才会被选中并应用样式。
+例：
+
+```html
+<body>
+    <h1>大标题</h1>
+    <p>这是第一个文本</p>
+    <h2>小标题</h2>
+    <p>这是第二个文本</p>
+    <p>这是第三个文本</p>
+    <h2>小标题</h2>
+    <p>这是第四个文本</p>
+</body>
+```
+
+```css
+h2 + p{
+  color:red;
+}
+```
+*输出：*
+
+<center>
+  <img src="Images/image-8.png">
+</center>
+
+##### 通用兄弟选择器 
+如果我们想要选中所有跟在\<h2>元素后面的\<p>元素，并改变它们的颜色为蓝色，我们可以使用通用兄弟选择器：
+*例：*
+```html
+<body>
+    <h2>大标题</h2>
+    <p>这是第一个文本</p>
+    <h2>小标题</h2>
+    <p>这是第二个文本</p>
+    <p>这是第三个文本</p>
+    <h2>小标题</h2>
+    <p>这是第四个文本</p>
+</body>
+```
+
+```css
+h2 ~ p{
+  color:red;
+}
+```
+*输出：*
+<center>
+  <img src="Images/image-9.png">
+</center>
+
+#### 全局选择器
+全局选择器，是由一个星号（*）代指的，它选中了文档中的所有内容（或者是父元素中的所有内容，比如，它紧随在其他元素以及邻代运算符之后的时候）。
+
+###  选择器的优先级
+类选择器和元素选择器之间存在冲突，类选择器优先；元素选择器之间存在冲突，后一个规则优先。
+
+
+
+### @规则
+CSS 的 @rules（读作“at-rules”）是一些特殊的规则，提供了关于 CSS 应该执行什么或如何表现的指令。
+
+
+常见规则：
+
+`@media`：创建媒体查询
+*例：*
+```css
+body {
+    background-color: pink;
+  }
+  
+  @media (min-width: 800px) {
+    body {
+      background-color: rgb(91, 212, 107);
+    }
+  }
+```
 
 
 
 ## 常用技巧
 
 <p><a id="responsive"></a></p>
+
+
+
+
 
 ### 响应式图片设计
 
@@ -552,3 +800,5 @@ img{
   height: auto;
 }
 ```
+
+

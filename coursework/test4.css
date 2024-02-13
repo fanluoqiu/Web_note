@@ -1,0 +1,10 @@
+body {
+    background-color: pink;
+  }
+  
+  @media (min-width: 800px) {
+    body {
+      background-color: rgb(91, 212, 107);
+    }
+  }
+  
