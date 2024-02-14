@@ -61,8 +61,9 @@ h4:before {
 <ul>
 <li><a href="https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web">MDN</a></li>
 <li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference">CSS参考</a></li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS/First_steps/Getting_started">学习进度</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Backgrounds_and_bordershttps://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Backgrounds_and_borders">学习进度</a></li>
 <li><a href="https://validator.w3.org/">HTML语法检查</a></li>
+<li><a href="https://cssgradient.io/">渐变背景生成</a></li>
 </ul>
 <h2 id="html">HTML </h2>
 <h3 id="前言">前言 </h3>
@@ -600,23 +601,202 @@ p<span class="token class">.class1</span></span><span class="token punctuation">
 </center>
 <h4 id="全局选择器">全局选择器 </h4>
 <p>全局选择器，是由一个星号（*）代指的，它选中了文档中的所有内容（或者是父元素中的所有内容，比如，它紧随在其他元素以及邻代运算符之后的时候）。</p>
-<h3 id="选择器的优先级">选择器的优先级 </h3>
-<p>类选择器和元素选择器之间存在冲突，类选择器优先；元素选择器之间存在冲突，后一个规则优先。</p>
-<h3 id="规则">@规则 </h3>
-<p>CSS 的 @rules（读作“at-rules”）是一些特殊的规则，提供了关于 CSS 应该执行什么或如何表现的指令。</p>
-<p>常见规则：</p>
-<p><code>@media</code>：创建媒体查询<br>
-<em>例：</em></p>
-<pre data-role="codeBlock" data-info="css" class="language-css css"><code><span class="token selector">body</span> <span class="token punctuation">{</span>
-    <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token color">pink</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
+<h3 id="层叠-优先级与继承">层叠、优先级与继承 </h3>
+<h4 id="选择器的优先级">选择器的优先级 </h4>
+<p>浏览器是根据优先级来决定当多个规则有不同选择器对应相同的元素的时候需要使用哪个规则。它基本上是一个衡量选择器具体选择哪些区域的尺度</p>
+<blockquote>
+<p>类选择器和元素选择器之间存在冲突，类选择器优先；元素选择器之间存在冲突，后一个规则优先。但是，内联样式优先级更高</p>
+</blockquote>
+<h5 id="优先级的计算">优先级的计算 </h5>
+<p>在一些情况下，有些规则在最后出现，但是却应用了前面的具有冲突的规则。这是因为前面的有更高的优先级。本质上，不同类型的选择器有不同的分数值，把这些分数相加就得到特定选择器的权重，然后就可以进行匹配。</p>
+<p>一个选择器的优先级可以说是由三个不同的分量相加，可以认为是百（ID）十（类）个（元素）——三位数的三个位数：</p>
+<ul>
+<li>ID：选择器中包含 ID 选择器则百位得一分。</li>
+<li>类：选择器中包含类选择器、属性选择器或者伪类则十位得一分。</li>
+<li>元素：选择器中包含元素、伪元素选择器则个位得一分。</li>
+</ul>
+<blockquote>
+<p>备注： 通用选择器（*）、组合符（+、&gt;、~、' '）和调整优先级的选择器（:where()）不会影响优先级。</p>
+</blockquote>
+<h4 id="继承">继承 </h4>
+<p>一些设置在父元素上的 CSS 属性是可以被子元素继承的。</p>
+<table>
+<thead>
+<tr>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>继承可以简化代码，降低css样式的复杂性。</td>
+<td>如果在网页中所有的元素都大量使用继承样式，那么判断样式的来源就会很困难。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="层叠">层叠 </h4>
+<p>层叠是 CSS 的一个基本特征，它是一个定义了如何合并来自多个源的属性值的算法,它通过挑选 CSS 声明来给 CSS 属性设置正确的值。是为了解决样式冲突（一个标签指定了相同样式）而存在的。</p>
+<p>步骤如下：</p>
+<ol>
+<li><strong>相关声明</strong>：找到所有具有匹配每个元素的选择器的声明代码块。</li>
+<li><strong>重要性</strong>：根据规则是普通还是重要对规则进行排序。重要的样式是指设置了 <code>!important (en-US)</code> 标志的样式。</li>
+<li><strong>来源</strong>：在两个按重要性划分的分组内，按作者、用户或用户代理这几个来源对规则进行排序。</li>
+<li><strong>层</strong>：在六个按重要性和来源划分的分组内，按层叠层进行排序。普通声明的层顺序是从创建的第一个到最后一个，然后是未分层的普通样式。对于重要的样式，这个顺序是反转的，但保持未分层的重要样式优先权最低。</li>
+<li><strong>优先级</strong>：对于来源层中优先权相同的竞争样式，按优先级对声明进行排序。</li>
+<li><strong>出现顺序</strong>：当两个来源层的优先权相同的选择器具有相同的优先级时，最后声明的具有最高优先级的选择器的属性值获胜。</li>
+</ol>
+<h5 id="层叠顺序">层叠顺序 </h5>
+<center>
+<table>
+<thead>
+<tr>
+<th>来源</th>
+<th>重要程度</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>用户代理</td>
+<td>普通</td>
+</tr>
+<tr>
+<td>2</td>
+<td>用户</td>
+<td>普通</td>
+</tr>
+<tr>
+<td>3</td>
+<td>页面作者</td>
+<td>普通</td>
+</tr>
+<tr>
+<td>4</td>
+<td>CSS 动画</td>
+<td>见下节</td>
+</tr>
+<tr>
+<td>5</td>
+<td>页面作者</td>
+<td>!important</td>
+</tr>
+<tr>
+<td>6</td>
+<td>用户</td>
+<td>!important</td>
+</tr>
+<tr>
+<td>7</td>
+<td>用户代理</td>
+<td>!important</td>
+</tr>
+<tr>
+<td>8</td>
+<td>css 过渡 (css transitions)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</center>
+<ul>
+<li><strong>用户代理样式(用户代理样式表</strong>)：浏览器中一有个基本的样式表来给任何网页设置默认样式。</li>
+<li><strong>网页的作者(作者样式表)</strong>：网页的作者可以定义文档的样式。</li>
+<li><strong>用户(用户样式表)</strong>：作为浏览器的用户，可以使用自定义样式表定制使用体验。</li>
+</ul>
+<blockquote>
+<p>用 &lt;style&gt; 元素直接在元素上声明的样式是作者样式。</p>
+</blockquote>
+<p>对于每个属性，“获胜”的声明是来自基于权重（普通或重要）具有优先权的来源的声明。来自具有最高优先权的来源的值将被应用。如果获胜来源对于一个元素有多个属性声明，那么将比较这些竞争属性值的选择器的优先级。不同来源之间的选择器从不比较优先级。当具有优先权的来源中竞争的声明具有相同的优先级时，出现顺序才变得相关。</p>
+<h5 id="层叠层">层叠层 </h5>
+<p>类似于我们有六个基于来源和重要性的优先权级别，层叠层使我们能够在这些来源中创建子来源级别的优先权。</p>
+<p>在六个来源中的每一个，都可以有多个层叠层。层创建的顺序非常重要。层创建的顺序确定了同一来源内层的优先权顺序。</p>
+<p>在普通来源中，层按照创建的顺序排序。优先权顺序是从首个创建的层到最后一个层，然后是未分层的普通样式。</p>
+<p>对于重要样式，这个顺序是相反的。所有未分层的重要样式会层叠在一起，形成一个隐式层，优先权高于所有非过渡的普通样式。未分层的重要样式的优先权低于任何重要分层样式。在同一来源内，先前声明的层中的重要样式优先于后续声明的层中的重要样式。</p>
+<h3 id="盒模型">盒模型 </h3>
+<h4 id="块级盒子block-box和-内联盒子inline-box">块级盒子（Block box）和 内联盒子（Inline box） </h4>
+<p><strong>块级盒子</strong></p>
+<ul>
+<li>盒子会在内联的方向上扩展并占据父容器在该方向上的所有可用空间，在绝大数情况下意味着盒子会和父容器一样宽</li>
+<li>每个盒子都会换行</li>
+<li>width 和 height 属性可以发挥作用</li>
+<li>内边距（padding）, 外边距（margin）和 边框（border）会将其他元素从当前盒子周围“推开”</li>
+</ul>
+<p><strong>内联盒子</strong></p>
+<ul>
+<li>盒子不会产生换行。</li>
+<li>width 和 height 属性将不起作用。</li>
+<li>垂直方向的内边距、外边距以及边框会被应用但是不会把其他处于 inline 状态的盒子推开。</li>
+<li>水平方向的内边距、外边距以及边框会被应用且会把其他处于 inline 状态的盒子推开。</li>
+</ul>
+<p>我们通过对盒子<code>display</code> 属性的设置来控制盒子的外部显示类型。</p>
+<h5 id="补充inline-block">补充：inline-block </h5>
+<p><code>display</code> 有一个特殊的值，它在内联和块之间提供了一个中间状态。这对于以下情况非常有用：你不希望一个项切换到新行，但希望它可以设定宽度和高度，并避免上面看到的重叠。</p>
+<p>一个元素使用 <code>display: inline-block</code>，实现我们需要的块级的部分效果：</p>
+<ul>
+<li>设置width 和height 属性会生效。</li>
+<li>padding, margin, 以及border 会推开其他元素。</li>
+</ul>
+<p>但是，它不会跳转到新行，如果显式添加 width 和 height 属性，它只会变得比其内容更大。</p>
+<blockquote>
+<p>外部显示类型决定盒子是块级还是内联,内部显示类型决定盒子内部元素如何布局。</p>
+</blockquote>
+<h4 id="盒模型的组成">盒模型的组成 </h4>
+<center>
+  <img src="data:image/png;charset=utf-8;base64,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">
+</center>
+<ul>
+<li><strong>Content box</strong>:这个区域是用来显示内容，大小可以通过设置 <code>width</code> 和 <code>height</code><br>
+-** Padding box**: 包围在内容区域外部的空白区域；大小通过 <code>padding</code> 相关属性设置。</li>
+<li><strong>Border box</strong>: 边框盒包裹内容和内边距。大小通过 <code>border</code> 相关属性设置。</li>
+<li><strong>Margin box</strong>: 这是最外面的区域，是盒子和其他元素之间的空白区域。大小通过 <code>margin</code> 相关属性设置。</li>
+</ul>
+<h3 id="常用css属性">常用CSS属性 </h3>
+<h4 id="背景">背景 </h4>
+<dl>
+<dt>background-color</dt>
+<dd>定义了 CSS 中任何元素的背景颜色。</dd>
+<dt>background-image</dt>
+<dd>在一个元素的背景中显示一个图像。</dd>
+<dt>background-repeat</dt>
+<dd>用于控制图像的平铺行为。可作一下取值：
+  <ul>
+    <li><code>no-repeat</code>——阻止背景重复平铺。</li>
+    <li><code>repeat-x/y</code>——仅水平/垂直方向上重复平铺。</li>
+    <li><code>repeat</code>——默认值，在水平和垂直两个方向重复平铺。</li>
+  </ul>
+</dd>
+<dt>background-size</dt>
+<dd>用于调整背景图像的大小:
+  <ul>
+    <li><code>cover</code>——浏览器将使图像足够大，使它完全覆盖了盒子区域，同时仍然保持其宽高比。在这种情况下，图像的部分区域可能会跳出盒子外。</li>
+    <li><code>contain</code>——浏览器会将图像调整到适合框内的尺寸。在这种情况下，如果图像的长宽比与盒子的长宽比不同，你可能会在图像的两边或顶部和底部出现空隙。</li>
+  </ul>
+</dd>
+<dt>background-attachment</dt>
+<dd>指定内容滚动时背景的滚动方式：
+  <ul>
+    <li><code>scroll</code>：使元素的背景在页面滚动时滚动。如果滚动了元素内容，则背景不会移动。实际上，背景被固定在页面的相同位置，所以它会随着页面的滚动而滚动。</li>
+    <li><code>fixed</code>：使元素的背景固定在视口上，这样当页面或元素内容滚动时，它就不会滚动。它将始终保持在屏幕上相同的位置。</li>
+    <li><code>local</code>：将背景固定在它所设置的元素上，所以当你滚动该元素时，背景也随之滚动。</li>
+  </ul>
+</dd>
+</dl>
+<h4 id="边框">边框 </h4>
+<dl>
+  <dt>border-style</dt>
+  <dd>用来设定元素所有边框的样式：
+    <ul>
+      <li><code>none</code>：不显示边框</li>      <li><code>dotted</code>：显示为一系列圆点。</li>
+      <li><code>dashed</code>：显示为一系列短的方形虚线。</li>
+      <li><code>solid</code>：显示为一条实线。</li>
+      <li><code>double</code>：显示为一条双实线。</li>
+    </ul>
+  </dd><dt>border-radius</dt>
+  <dd>设置元素的外边框圆角。</dd>
   
-  <span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> <span class="token number">800</span><span class="token unit">px</span><span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-    <span class="token selector">body</span> <span class="token punctuation">{</span>
-      <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token color"><span class="token function">rgb</span><span class="token punctuation">(</span><span class="token number">91</span><span class="token punctuation">,</span> <span class="token number">212</span><span class="token punctuation">,</span> <span class="token number">107</span><span class="token punctuation">)</span></span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-</code></pre><h2 id="常用技巧">常用技巧 </h2>
+</dl>
+<h2 id="常用技巧">常用技巧 </h2>
 <p><a id="responsive" href=""></a></p>
 <h3 id="响应式图片设计">响应式图片设计 </h3>
 <p><strong>方式一：使用&lt;img&gt;标签和css样式</strong></p>
@@ -923,15 +1103,93 @@ p<span class="token class">.class1</span></span><span class="token punctuation">
           </a></div>
         </div>
       </details>
-    <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#选择器的优先级" class="md-toc-link">
-            <p>选择器的优先级</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#规则" class="md-toc-link">
-            <p>@规则</p>
+    <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#层叠-优先级与继承" class="md-toc-link"><p>层叠、优先级与继承</p>
+</a>
+          </summary>
+        <div>
+          <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#选择器的优先级" class="md-toc-link"><p>选择器的优先级</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#优先级的计算" class="md-toc-link">
+            <p>优先级的计算</p>
 
           </a></div>
+        </div>
+      </details>
+    <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#继承" class="md-toc-link">
+            <p>继承</p>
+
+          </a></div><details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#层叠" class="md-toc-link"><p>层叠</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#层叠顺序" class="md-toc-link">
+            <p>层叠顺序</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#层叠层" class="md-toc-link">
+            <p>层叠层</p>
+
+          </a></div>
+        </div>
+      </details>
+    
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#盒模型" class="md-toc-link"><p>盒模型</p>
+</a>
+          </summary>
+        <div>
+          <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#块级盒子block-box和-内联盒子inline-box" class="md-toc-link"><p>块级盒子（Block box）和 内联盒子（Inline box）</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#补充inline-block" class="md-toc-link">
+            <p>补充：inline-block</p>
+
+          </a></div>
+        </div>
+      </details>
+    <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#盒模型的组成" class="md-toc-link">
+            <p>盒模型的组成</p>
+
+          </a></div>
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#常用css属性" class="md-toc-link"><p>常用CSS属性</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#背景" class="md-toc-link">
+            <p>背景</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#边框" class="md-toc-link">
+            <p>边框</p>
+
+          </a></div>
+        </div>
+      </details>
+    
         </div>
       </details>
     <details style="padding:0;;padding-left:24px;" open="">
