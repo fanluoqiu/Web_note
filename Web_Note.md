@@ -17,9 +17,10 @@ export_on_save:
 
 - [MDN](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web)
 - [CSS参考](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference)
-- [学习进度](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Backgrounds_and_bordershttps://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Backgrounds_and_borders)
+- [学习进度](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Styling_text/Styling_lists)
 - [HTML语法检查](https://validator.w3.org/)
 - [渐变背景生成](https://cssgradient.io/)
+- [网页安全字体的列表](https://www.cssfontstack.com/Tahoma)
 ## HTML
 
 ### 前言
@@ -56,7 +57,7 @@ HTML是一种由不同元素组成的标记语言，应用于文本，赋予文�
     <img src="Images/image.png">
 </center>
 
->在这篇文章中提到的“块”和“内联”，不应该与 CSS 盒子的类型中的同名术语相混淆。尽管它们默认是相关的，但改变 CSS 显示类型并不会改变元素的分类，也不会影响它可以包含和被包含于哪些元素。防止这种混淆也是 HTML5 摒弃这些术语的原因之一。
+>在这篇文章中提到的“块”和“内联”，不应该与 CSS 盒子的类型中的同名术语相混淆。尽管它们默认是相关的，但改变 CSS 显示类型并不会改变元素的分类，也不会影响它可以包含和被包含于哪 些元素。防止这种混淆也是 HTML5 摒弃这些术语的原因之一。
 
 #### 元素属性
 属性包含元素的额外信息，这些信息不会出现在实际的内容中。在上述例子中，这个 class 属性是一个识别名称，以后为元素设置样式信息时更加方便。
@@ -583,15 +584,37 @@ p.class1{
 状态选择器（也称为伪类选择器）在CSS中用于定义元素的特定状态下的样式。这些状态可以是用户与元素交互时的状态，如悬停、聚焦、点击等。
 
 常用的状态选择器有：
+`:link` - 仅用于未被访问的链接。
+`:visited` - 仅用于链接，当链接已被访问时，应用的样式。
+`:focus` - 当元素获得焦点时（例如，通过点击或使用键盘导航），应用的样式。
 `:hover` - 当用户鼠标悬停在元素上时，应用的样式。
 `:active` - 当元素被点击时，应用的样式。
-`:focus` - 当元素获得焦点时（例如，通过点击或使用键盘导航），应用的样式。
-`:visited` - 仅用于链接，当链接已被访问时，应用的样式。
-`:link` - 仅用于未被访问的链接。
 `:checked` - 用于单选按钮、复选框等输入元素，当元素被选中时，应用的样式。
 `:disabled` - 当元素被禁用时，应用的样式。
 
 `:first-child`- 表示在一组兄弟元素中的第一个元素。
+
+##### 补充：链接元素样式的定义顺序
+```css
+a {
+}
+
+a:link {
+}
+
+a:visited {
+}
+
+a:focus {
+}
+
+a:hover {
+}
+
+a:active {
+}
+```
+这几个规则的顺序是有意义的，因为链接的样式是建立在另一个样式之上的，比如，第一个规则的样式也会在后面的规则中生效，一个链接被激活 (activated) 的时候，它也是处于悬停 (hover) 状态的。如果你搞错了顺序，那么就可能不会产生正确的效果。辅助记忆：<b>L</b>o<b>V</b>e <b>F</b>ears <b>HA</b>te.
 
 #### 组合选择器（交集选择器）
 就是两个不同的选择器一起用。在<a href="#CSS的语法例2">例2</a>中，若要选择使用类`calss1`的所有元素`<p>`，则应该写成：
@@ -834,7 +857,129 @@ h2 ~ p{
 - **Border box**: 边框盒包裹内容和内边距。大小通过 `border` 相关属性设置。
 - **Margin box**: 这是最外面的区域，是盒子和其他元素之间的空白区域。大小通过 `margin` 相关属性设置。
 
+### CSS的值与单位
+[MDN：
+CSS 的值与单位](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Values_and_units)
+
+
+#### 相对单位长度
+
+单位|相对于
+---|---
+`em`|在 font-size 中使用是相对于父元素的字体大小，在其他属性中使用是相对于自身的字体大小，如 width。
+`rem`|根元素的字体大小。
+`vm`|视口宽度的 1%。
+`vh`|	视口高度的 1%。
+
+
+
 ### 常用CSS属性
+
+#### 文本
+
+##### a.基本文本样式
+<dl>
+  <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-decoration" target="_blank">text-decoration</a></dt>
+  <dd>设置文本上的装饰性线条的外观，它是 text-decoration-line、text-decoration-color、text-decoration-style 和较新的 text-decoration-thickness 属性的缩写。text-decoration-style的取值如下：
+    <ul>
+      <li><code>none</code>：取消已经存在的任何文本装饰。</li>
+      <li><code>dotted</code>：虚线</li>
+      <li><code>wavy</code>：波浪线</li>
+      <li><code>underline</code>：下划线</li>
+      <li><code>overline</code>：上划线</li>
+      <li><code>line-through</code>：穿过文本的线</li>
+    </ul>
+  </dd>
+
+  <dt>font-family</dt>
+  <dd>通过给定一个有先后顺序的，由字体名或者字体族名组成的列表来为选定的元素设置字体。属性值用逗号隔开。浏览器会选择列表中第一个该计算机上有安装的字体，或者是通过 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/@font-face" target="_blank">@font-face </a>指定的可以直接下载的字体。</dd>
+</dl>
+
+在CSS中，CSS 定义了 5 个常用的字体:
+<table>
+  <tr>
+      <th>名称</th>
+      <th>定义</th>
+      <th>示例</th>
+  </tr>
+  <tr>
+      <td><center><code>serif</code></center></td>
+      <td>衬线字体，即有衬线的字体（衬线是指字体笔画尾端的小装饰，存在于某些印刷体字体中）。</td>
+      <td style=" font-family:serif;font-size:64px;">asdf</td>
+  </tr>
+  <tr>
+      <td><center><code>sans-serif</code></center></td>
+      <td>无衬线字体。</td>
+      <td style=" font-family:sans-serif;font-size:64px;">asdf</td>
+  </tr>
+    <tr>
+      <td><center><code>monospace</code></center></td>
+      <td>等宽字体，指包含的全部字符的宽度相同的字体，通常在编辑代码时使用。</td>
+      <td style=" font-family:monospace;font-size:64px;">asdf</td>
+  </tr>
+  <tr>
+      <td><center><code>cursive</code></center></td>
+      <td>手写字体，对于英文字符而言通常具有顺滑的连接笔画以模拟手写效果。</td>
+      <td style=" font-family:cursive;font-size:64px;">asdf</td>
+  </tr>
+  <tr>
+      <td><center><code>fantasy</code></center></td>
+      <td>装饰字体。</td>
+      <td style=" font-family:fantasy;font-size:64px;">asdf</td>
+  </tr>
+</table>
+
+>cursive 和 fantasy 是不太好预测的，我们建议使用它们的时候应该稍微注意一些，多多测试。
+
+<dl>
+  <dt>font-style</dt>
+  <dd>定义字体的斜体样式，它的取值如下：</dd>
+
+  <ul>
+    <li><code>normal</code>：选择 font-family 的常规字体。</li>
+    <li><code>italic</code>：选择斜体，如果当前字体没有可用的斜体版本，会选用倾斜体（oblique ）替代。</li>
+  </ul>
+
+  <dt>letter-spacing / word-spacing</dt>
+  <dd>属性允许设置的文本中的字母与字母(汉字)之间的间距、或是单词与单词之间的间距。</dd>
+
+  <dt>text-indent</dt>
+  <dd>定义首行文本内容之前的缩进量。</dd>
+</dl>
+
+##### b.列表样式
+
+<dl>
+  <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/list-style-type" target="_blank">list-style-type</a></dt>
+  <dd>设置用于列表的项目符号的类型，例如t无序列表的方形或圆形项目符号，或有序列表的数字、字母或罗马数字。常见取值如下：
+  <ul>
+    <li><code>disc</code>：实心圆</li>
+    <li><code>circle</code>：空心圆</li>
+    <li><code>square</code>：实心方框</li>
+    <li><code>decimal</code>：阿拉伯数字</li>
+    <li><code>upper-roman</code>罗马数字</li>
+  </ul>
+  
+  </dd>
+  <dt>list-style-position</dt>
+  <dd>指定标记框在主体块框中的位置。可取值如下：
+    <ul>
+      <li><code>outside</code>：标记盒在主块盒的外面。</li>
+      <li><code>inside</code>：标记盒是主要块盒中的第一个行内盒，处于元素的内容流之后。</li>
+    </ul>  
+  </dd>
+
+</dl>
+
+`list-style`是`list-style-type`和`list-style-position`的简写，如`list-style: square inside;`
+
+##### c.CSS计数器
+CSS 计数器提供用于自定义列表计数和样式的高级工具。详见：
+
+- <code><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/@counter-style" target="_blank" >@counter-style</a></code>
+- <code><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/counter-increment" target="_blank">counter-increment</a></code>
+- <code><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/counter-reset" target="_blank">counter-reset</a></code>
+
 #### 背景
 <dl>
 <dt>background-color</dt>
@@ -883,6 +1028,83 @@ h2 ~ p{
   
   </dd>
 </dl>
+
+#### 溢出
+溢出是指盒子无法容纳下内容，内容超出边界的现象。常用以下属性控制溢出
+
+<dl>
+  <dt>overflow</dt>
+  <dd>
+    从下面列表中指定一个或者两个关键字来作为<code>overflow</code>属性。如果指定两个关键字，第一个关键字用于<code>overflow-x</code>，第二个关键字用于<code>overflow-y</code>。否则，<code>overflow-x</code> 和 <code>overflow-y</code> 设置为相同的属性值：
+    <ul>
+      <li><code>visible</code>：overflow 的默认值，内容不能被裁减并且可能渲染到边距盒（padding）的外部。</li>
+      <li><code>hidden</code>：内容将被裁减以适应边距（padding）盒。不提供滚动条，也不支持允许用户滚动。内容可以以编程的方式滚动</li>
+      <li><code>clip</code>：clip 和 hidden 之间的区别是 clip 关键字禁止所有滚动，包括以编程方式的滚动。</li>
+      <li><code>scroll</code>：内容将被裁减以适应边距（padding）盒。并一直显示滚动条</li>
+      <li><code>auto</code>：如果内容适应边距（padding）盒，它看起来与 visible 相同，但是仍然建立了一个新的块级格式化上下文。如果内容溢出，则浏览器提供滚动条。</li>
+    </ul>
+</dl>
+
+>为使 overflow 具有效果，块级水平的容器必须有一个设定的高度（height 或 max-height）或 white-space 设置为 nowrap。
+
+#### 可替换元素
+
+<dl>
+  <dt>object-fit</dt>
+  <dd>指定可替换元素（例如：&ltimg&gt 或 &ltvideo&gt）的内容应该如何适应到其使用高度和宽度确定的框。它的取值如下：
+    <ul>
+      <li><code>contain</code>：被替换的内容将被缩放，以在填充元素的内容框时保持其宽高比。整个对象在填充盒子的同时保留其长宽比，因此如果宽高比与框的宽高比不匹配，该对象将被添加“黑边”。</li>
+      <li><code>cover</code>被替换的内容在保持其宽高比的同时填充元素的整个内容框。如果对象的宽高比与内容框不相匹配，该对象将被剪裁以适应内容框。</li>
+    </ul>
+  
+  
+  </dd>
+</dl>
+
+#### 链接
+
+<dl>
+  <dt>cursor</dt>
+  <dd>设置光标的类型（如果有），在鼠标指针悬停在元素上时显示相应样式(<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/cursor" target="_blank">详见MDN：cursor</a>)。常用取值如下：
+  <table>
+    <tr>
+      <th>类型</th>  <th>CSS 值</th>  <th>例子</th>  <th>描述</th> 
+    </tr>
+    <tr>
+      <td rowspan="2">General</td>
+      <td><code>auto</code></td>
+      <td></td>
+      <td>浏览器根据当前内容决定指针样式
+例如当内容是文字时使用 text 样式</td>
+    </tr>
+    <tr>
+      <td><code>default</code></td>
+      <td style="cursor:help"><img src="Images/default.gif"></td>
+      <td>默认指针，通常是箭头。</td>
+    </tr>
+    <tr>
+      <td rowspan="2">链接及状态</td>
+      <td><code>pointer</code></td>
+      <td  style="cursor:pointer"><img src="Images/image-11.png"></td>
+      <td>浏览器根据当前内容决定指针样式
+例如当内容是文字时使用 text 样式</td>
+    </tr>
+  </table>
+  
+
+  
+  
+  </dd>
+
+
+
+</dl>
+
+
+
+
+
+
 
 ## 常用技巧
 

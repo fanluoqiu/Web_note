@@ -1,0 +1,183 @@
+/* General setup */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0 auto;
+  min-width: 1000px;
+  max-width: 1400px;
+  font-family: serif ;
+}
+
+/* Layout */
+
+section {
+  float: left;
+  width: 50%;
+}
+
+aside {
+  float: left;
+  width: 30%;
+}
+
+nav {
+  float: left;
+  width: 20%;
+}
+
+footer {
+  clear: both;
+}
+
+header, section, aside, nav, footer {
+  padding: 20px;
+}
+
+/* header and footer */
+
+header, footer {
+  border-top: 5px solid #a66;
+  border-bottom: 5px solid #a66;
+}
+
+/* WRITE YOUR CODE BELOW HERE */
+
+html{
+  font-size: 10px;
+}
+
+h1,
+h2{
+  font-family:  sans-serif ;
+  letter-spacing:0.5rem;
+}
+
+
+h1{
+  font-size: 5rem;
+
+  text-align: center;
+}
+
+h2{
+  font-size: 3rem;
+}
+
+p{
+  font-size: 2rem;
+  line-height: 1.5;
+  text-align: justify;
+}
+
+
+section h2+p{
+  text-indent:2rem;
+}
+
+section h2 p{
+  text-indent:4rem;
+} 
+
+section li{
+  font-size: 2rem;
+  line-height: 1.5;
+}
+
+section ol{
+  list-style-type:upper-alpha;
+}
+
+section a{
+ display: inline-block;
+ text-decoration: none;
+ padding-right: 2rem;
+ background: url(../image/external-link-52.png) no-repeat right  ;
+ background-size: 1.5rem 1.5rem;
+ color:rgb(0, 64, 255);
+}
+
+
+
+section a:visited{
+  color:rgb(49, 81, 175);
+}
+
+section a:focus{
+  outline: none;  
+}
+
+section a:hover{  
+  background-color: rgb(255, 227, 227);
+  border-bottom:none;
+}
+
+section a:active{
+  color: red;
+}
+
+aside ul{
+  padding: 0;
+}
+
+aside ul li{
+  list-style-type: none;
+
+}
+
+aside ul li a{
+  font-size: 2rem;
+
+  font-weight: bolder;
+  text-decoration: none;
+  color: rgb(139, 63, 0);
+  padding-left: 1rem;
+  border-left:0.5rem solid  rgba(255, 81, 0, 0.103);
+
+}
+
+
+aside ul li a:focus{
+  border-left:0.5rem solid rgb(255, 81, 0);
+  background-color: rgb(255, 244, 244);
+}
+
+
+aside p a{
+
+  color: white;
+  background-color: #a66;
+  font-size: 2rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 0.2rem solid ;
+  border-radius: 3rem;
+  padding: 0.5rem 1rem;
+}
+
+
+nav {
+  font-size: 2rem;
+}
+
+
+nav ul{
+  list-style: none;
+}
+
+nav ul li{
+  display: block;
+  text-align: center;
+  letter-spacing:0.5rem;
+  border:0.2rem solid #a66;
+  margin-top:3rem ;
+  padding: 1.5rem ;
+}
+
+nav a{
+  text-decoration: none;
+  color: rgb(182, 0, 30);
+  text-transform: uppercase;
+}

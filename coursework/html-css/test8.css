@@ -1,0 +1,51 @@
+html{
+  font-size: 10px;
+}
+
+body {
+  width: 80vw;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  font-family: sans-serif;
+}
+
+h1{
+  font-size: 5rem;
+  margin-top: 20vh;
+  border-bottom:2px solid red;
+  max-width:25rem;
+  
+}
+
+p {
+  font-size: 3rem;
+  line-height: 1.5;
+  text-align: justify;
+}
+
+a {
+  outline: none;
+  text-decoration: none;
+  padding: 0.2rem 0.1rem 0;
+  padding-right: 2rem;
+  background: url(../image/icons8-external-link.svg) no-repeat right;
+  background-size: 16px 16px;
+}
+
+a:link {
+  color: #001aff;
+}
+
+a:visited {
+  color:  #0011ac;
+}
+
+a:focus,
+a:hover,
+a:active {
+  color: #000e86;
+  border-bottom:  0.15rem solid rgb(255, 153, 0);
+  background-color:rgb(255, 240, 215);
+}
+
+
