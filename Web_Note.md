@@ -10,10 +10,10 @@ export_on_save:
   html: true
 ---
 
-# Web学习笔记
+ Web学习笔记
 <p id=head>:)</p>
 
-## 相关网站
+# 相关网站
 
 - [MDN](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web)
 - [CSS参考](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference)
@@ -21,9 +21,9 @@ export_on_save:
 - [HTML语法检查](https://validator.w3.org/)
 - [渐变背景生成](https://cssgradient.io/)
 - [网页安全字体的列表](https://www.cssfontstack.com/Tahoma)
-## HTML
+# HTML
 
-### 前言
+## 前言
 HTML是一种由不同元素组成的标记语言，应用于文本，赋予文本不同的含义（它是段落吗？它是项目列表吗？它是表格吗？），将文档结构化为逻辑块（文档是否有头部？有三列内容？有一个导航菜单？）或嵌入非文本文件（图片、音频）。元素由开始标签、内容、结束标签三部分组成。
 
 <center>
@@ -32,16 +32,16 @@ HTML是一种由不同元素组成的标记语言，应用于文本，赋予文�
 </center>
 
 
-### 入门前知识
-#### 元素类型
-##### 块级元素
+## 入门前知识
+### 元素类型
+#### 块级元素
 块级元素在页面中以块的形式展现。一个块级元素出现在它前面的内容之后的新行上。任何跟在块级元素后面的内容也会出现在新的行上。块级元素通常是页面上的结构元素。例如，一个块级元素可能代表标题、段落、列表、导航菜单或页脚。一个块级元素不会嵌套在一个内联元素里面，但它可能嵌套在另一个块级元素里面。
 
-##### 内联元素
+#### 内联元素
 内联元素通常出现在块级元素中并环绕文档内容的一小部分，而不是一整个段落或者一组内容。内联元素不会导致文本换行。它通常与文本一起使用，例如，`<a>` 元素创建一个超链接，`<em>` 和 `<strong>` 等元素创建强调。
 
 
-##### 空元素
+#### 空元素
 一些元素只有一个标签，通常用来在此元素所在位置插入/嵌入一些东西。这些元素被称为空元素。（如`<img>`）
 
 *例：*
@@ -59,7 +59,7 @@ HTML是一种由不同元素组成的标记语言，应用于文本，赋予文�
 
 >在这篇文章中提到的“块”和“内联”，不应该与 CSS 盒子的类型中的同名术语相混淆。尽管它们默认是相关的，但改变 CSS 显示类型并不会改变元素的分类，也不会影响它可以包含和被包含于哪 些元素。防止这种混淆也是 HTML5 摒弃这些术语的原因之一。
 
-#### 元素属性
+### 元素属性
 属性包含元素的额外信息，这些信息不会出现在实际的内容中。在上述例子中，这个 class 属性是一个识别名称，以后为元素设置样式信息时更加方便。
 
 <center>
@@ -77,7 +77,7 @@ HTML是一种由不同元素组成的标记语言，应用于文本，赋予文�
 
 
 
-#### HTML文档结构
+### HTML文档结构
 ```html
 <!doctype html>   
 <html lang="zh-CN">
@@ -110,9 +110,9 @@ HTML是一种由不同元素组成的标记语言，应用于文本，赋予文�
 元素。包含了你访问页面时所有显示在页面上的内容，包含文本、图片、视频、游戏、可播放音频轨道等等。
 
 
-### 文本处理基础
+## 文本处理基础
 
-#### 标题和段落
+### 标题和段落
 在HTML中，一共有六种标题元素标签——h1、h2、h3、h4、h5 和 h6。每个元素代表文档中不同级别的内容：`<h1>` 表示主标题，`<h2>` 表示二级子标题，`<h3>` 表示三级子标题，依此类推。每个段落是通过 `<p>` 元素标签进行定义的。
 
 注意：
@@ -120,9 +120,9 @@ HTML是一种由不同元素组成的标记语言，应用于文本，赋予文�
 - 请确保在层次结构中以正确的顺序使用标题。不要使用 `<h3>` 来表示副标题，后面再跟 `<h2>` 来表示二级副标题——这是没有意义的，会导致奇怪的结果。
 - 在现有的六个标题层次中，除非觉得有必要，否则应该争取每页使用不超过三个。
 
-#### 列表
+### 列表
 
-##### 无序列表
+#### 无序列表
 无序列表用于标记列表项目顺序无关紧要的列表
 *例：*
 ```html
@@ -140,7 +140,7 @@ HTML是一种由不同元素组成的标记语言，应用于文本，赋予文�
   <li>人物</li>
 </ul> 
 
-##### 有序列表
+#### 有序列表
 有序列表用于标记列表项目顺序重要的列表
 *例：*
 ```html
@@ -158,7 +158,7 @@ HTML是一种由不同元素组成的标记语言，应用于文本，赋予文�
   <li>直行20米</li>
 </ol> 
 
-##### 描述列表*
+#### 描述列表*
 描述列表常用于一个或一组专业名词、答案的解释。描述列表使用与其他列表类型不同的闭合标签——`<dl>`；此外，每一项都用`<dt>`（description term）元素闭合。每个描述都用`<dd>`（description definition）元素闭合。
 *例：*
 ```html
@@ -185,28 +185,28 @@ HTML是一种由不同元素组成的标记语言，应用于文本，赋予文�
 <dd>可以在清晨带来活力。</dd>
 </dl>
 
-#### 重点强调
+### 重点强调
 
-##### 强调
+#### 强调
 
 `<em>`（emphasis）
 浏览器默认样式为斜体，并可以被屏幕阅读器识别，以不同的语调发出。
 
-##### 强烈的重要性
+#### 强烈的重要性
 
 `<strong>`（strong importance）
 浏览器默认样式为粗体，并可以被屏幕阅读器识别，以不同的语调发出。
 
-##### 斜体、粗体、下划线
+#### 斜体、粗体、下划线
 `<i>`
 被用来传达传统上用斜体表达的意义：外国文字，分类名称，技术术语，一种思想...
 `<b>`被用来传达传统上用粗体表达的意义：关键字，产品名称，引导句...
 
 `<u>`被用来传达传统上用下划线表达的意义：专有名词，拼写错误...
 
-### 文档与网站架构
+## 文档与网站架构
 
-#### 文档的基本组成部分
+### 文档的基本组成部分
 网页的外观一般由下面的版块组成：
 
 <dl>
@@ -235,11 +235,11 @@ HTML是一种由不同元素组成的标记语言，应用于文本，赋予文�
 - `<footer>`：页脚。
 
 
-### 常用标签
+## 常用标签
 
 
 
-#### \<a>：锚元素
+### \<a>：锚元素
 
 常用属性如下：
 `href`
@@ -252,7 +252,7 @@ HTML是一种由不同元素组成的标记语言，应用于文本，赋予文�
 >统一资源定位符（URL）与路径（path）
 统一资源定位符（Uniform Resource Locator，URL）是一个定义了在网络上的位置的一个文本字符串。例如，Mozilla 的简体中文主页位于 https://www.mozilla.org/zh-CN/。
 
-##### 链接到HTML网页
+#### 链接到HTML网页
 *例一：*
 ```html
 <!--文本链接到bing-->
@@ -276,7 +276,7 @@ HTML是一种由不同元素组成的标记语言，应用于文本，赋予文�
     </center> 
 </a> 
 
-##### 跳转到HTML网页的某个位置
+#### 跳转到HTML网页的某个位置
 如果需要跳转到当前网页的某个位置，需要给要链接到的元素分配一个 id 属性
 ```html
 <a id=head>:)</a>  <!--将代码放置于需要被跳转的位置-->
@@ -316,7 +316,7 @@ HTML是一种由不同元素组成的标记语言，应用于文本，赋予文�
 <p><a href="coursework/作业1.html#anc_work" target="_blank">跳转到作业1</a></p>
 
 <a id="audio"></a>
-#### \<audio>
+### \<audio>
 *相关标签* 
 <p><a href="#video">&ltvideo&gt</a></p>
 
@@ -324,14 +324,14 @@ HTML是一种由不同元素组成的标记语言，应用于文本，赋予文�
 
 
 
-#### \<div>:无语义元素
+### \<div>:无语义元素
 对于一些要组织的项目或要包装的内容，现有的语义元素均不能很好对应。用于作为一个单独的实体来修饰来响应单一的用 CSS 或 JavaScript。通过在其中插入 <figcaption>（作为第一个或最后一个子元素），可以将标题与 `<figure>` 元素相关联。图中找到的第一个`<figcaption>`元素显示为图的标题。
 
 >与`<span>`不同的是，`<div>`是块级元素（block）
 
 <p><a id=figure></a></p>
 
-#### \<figure>:可附标题内容元素
+### \<figure>:可附标题内容元素
 
 **相关标签**
 - <p><a href="#img">&ltimg&gt</a></p>
@@ -358,7 +358,7 @@ HTML是一种由不同元素组成的标记语言，应用于文本，赋予文�
 
 <p><a id=img></a></p>
 
-#### \<img>：图像嵌入元素
+### \<img>：图像嵌入元素
 
 
 **相关连接**
@@ -402,13 +402,13 @@ HTML是一种由不同元素组成的标记语言，应用于文本，赋予文�
 ```
 
 
-#### \<link>：外部资源链接元素
+### \<link>：外部资源链接元素
 规定了当前文档与外部资源的关系。该元素最常用于链接样式表
 
-#### \<meta>：元数据
+### \<meta>：元数据
 元数据就是描述数据的数据
 
-#### \<picture> 
+### \<picture> 
 - <p><a href="#img">&ltimg&gt</a></p>
 - <p><a href="#responsive">响应式图片设计</a></p>
 ---
@@ -426,12 +426,12 @@ HTML是一种由不同元素组成的标记语言，应用于文本，赋予文�
 
 
 
-#### \<span>:无语义元素
+### \<span>:无语义元素
 是短语内容的通用行内容器，并没有任何特殊语义。
 >与`<div>`不同的是，`<span>`是内联（inline）无语义元素。
 
 <a id="video"></a>
-#### \<video>元素
+### \<video>元素
 *相关标签*
 <p><a href="#audio">&lt audio&gt</a>
 
@@ -500,21 +500,21 @@ HTML是一种由不同元素组成的标记语言，应用于文本，赋予文�
 
 
 
-## CSS
+# CSS
 
-### 前言
+## 前言
 CSS （Cascading Style Sheets，层叠样式表）是用来控制网页在浏览器中的显示外观的声明式语言。浏览器会根据 CSS 的样式定义将其选定的元素显示为恰当的形式。一条 CSS 的样式定义包括属性和属性值，它们共同决定网页的外观。
 
 ### 入门前知识
 
-#### 调用CSS
+### 调用CSS
 假设现在需要调用样式表`test2_style.css`,只需在HTML中`<head>`元素内使用<Link>元素：
 
 ```html
  <link href="test2_style.css" rel="stylesheet">
 ```
 属性 `rel`让浏览器知道有 CSS 文档存在，属性 `href` 指定 CSS 文件的位置。
-#### CSS的语法
+### CSS的语法
 语法由一个选择器（selector）起头。它选择了我们将要用来添加样式的 HTML 元素。在这个例子中我们为一级标题（主标题`<h1>` 添加样式,在大括号内部定义一个或多个形式为`属性：值`的声明。
 *例1：* <a id="CSS的语法"></a>
 ```css
@@ -546,18 +546,18 @@ h1{
   <img src="Images/image-4.png">
 </center>
 
-### 选择器分类
-#### 元素选择器
+## 选择器分类
+### 元素选择器
 指直接匹配 HTML 元素的选择器（见<a href="#CSS的语法">例1</a>）
 
-#### 伪元素选择器
+### 伪元素选择器
 其表现为往标记文本中加入全新的 HTML 元素一样，和伪类相似。
 常用伪元素：
 
 `::before`（`::after`）- 常通过 content 属性来为一个元素添加修饰性的内容。此元素默认为行内元素。
 
 
-#### 类选择器
+### 类选择器
 使用元素选择器会导致同一个元素下的内容都一个样式，不能满足多样化设计，我们可以给 HTML 元素加个类名（class），再选中那个类名：
 
 *例2：* <a id="CSS的语法例2"></a>
@@ -580,7 +580,7 @@ p.class1{
 }
 ```
 
-#### 伪类选择器(状态选择器)
+### 伪类选择器(状态选择器)
 状态选择器（也称为伪类选择器）在CSS中用于定义元素的特定状态下的样式。这些状态可以是用户与元素交互时的状态，如悬停、聚焦、点击等。
 
 常用的状态选择器有：
@@ -594,7 +594,7 @@ p.class1{
 
 `:first-child`- 表示在一组兄弟元素中的第一个元素。
 
-##### 补充：链接元素样式的定义顺序
+#### 补充：链接元素样式的定义顺序
 ```css
 a {
 }
@@ -616,7 +616,18 @@ a:active {
 ```
 这几个规则的顺序是有意义的，因为链接的样式是建立在另一个样式之上的，比如，第一个规则的样式也会在后面的规则中生效，一个链接被激活 (activated) 的时候，它也是处于悬停 (hover) 状态的。如果你搞错了顺序，那么就可能不会产生正确的效果。辅助记忆：<b>L</b>o<b>V</b>e <b>F</b>ears <b>HA</b>te.
 
-#### 组合选择器（交集选择器）
+### 其他非常用伪类
+
+<div style="width:150px">选择器</div>|**描述**
+---|---
+`nth-child`	|匹配一列兄弟元素中的元素——兄弟元素按照an+b形式的式子进行匹配（比如 2n+1 匹配元素 1、3、5、7 等。即所有的奇数个）。
+`nth-of-type`|匹配某种类型的一列兄弟元素（比如，\<p>元素）——兄弟元素按照an+b形式的式子进行匹配（比如 2n+1 匹配元素 1、3、5、7 等。即所有的奇数个）。
+`nth-last-child`|匹配一列兄弟元素，从后往前倒数。兄弟元素按照an+b形式的式子进行匹配（比如 2n+1 匹配按照顺序来的最后一个元素，然后往前两个，再往前两个，诸如此类。从后往前数的所有奇数个）。
+
+
+
+
+### 组合选择器（交集选择器）
 就是两个不同的选择器一起用。在<a href="#CSS的语法例2">例2</a>中，若要选择使用类`calss1`的所有元素`<p>`，则应该写成：
 ```css
 p.class1{
@@ -624,7 +635,7 @@ p.class1{
 }
 ```
 
-#### 后代选择器与子代选择器
+### 后代选择器与子代选择器
 假设仅选择嵌套在`<li>`元素内的`<em>`我们可以使用一个称为包含选择符的选择器（后代选择器），它只是单纯地在两个选择器之间加上一个空格。子代选择器只能选择元素的子代，而他的孙代、曾孙不能被选上，后代选择器可以选子代、孙代、曾孙的元素。
 
 *例：*
@@ -689,9 +700,9 @@ oi > em{
 </table>
 
 
-#### 兄弟选择器
+### 兄弟选择器
 
-##### 相邻兄弟选择器
+#### 相邻兄弟选择器
 它选择紧接在另一个元素之后的元素，且两者有相同的父元素，只有当element2紧跟在element1后面时，element2才会被选中并应用样式。
 例：
 
@@ -718,7 +729,7 @@ h2 + p{
   <img src="Images/image-8.png">
 </center>
 
-##### 通用兄弟选择器 
+#### 通用兄弟选择器 
 如果我们想要选中所有跟在\<h2>元素后面的\<p>元素，并改变它们的颜色为蓝色，我们可以使用通用兄弟选择器：
 *例：*
 ```html
@@ -743,18 +754,24 @@ h2 ~ p{
   <img src="Images/image-9.png">
 </center>
 
-#### 全局选择器
+### 全局选择器
 全局选择器，是由一个星号（*）代指的，它选中了文档中的所有内容（或者是父元素中的所有内容，比如，它紧随在其他元素以及邻代运算符之后的时候）。
 
-### 层叠、优先级与继承
 
-####  选择器的优先级
+
+
+
+
+
+## 层叠、优先级与继承
+
+###  选择器的优先级
 
 浏览器是根据优先级来决定当多个规则有不同选择器对应相同的元素的时候需要使用哪个规则。它基本上是一个衡量选择器具体选择哪些区域的尺度
 
 >类选择器和元素选择器之间存在冲突，类选择器优先；元素选择器之间存在冲突，后一个规则优先。但是，内联样式优先级更高
 
-##### 优先级的计算
+#### 优先级的计算
 在一些情况下，有些规则在最后出现，但是却应用了前面的具有冲突的规则。这是因为前面的有更高的优先级。本质上，不同类型的选择器有不同的分数值，把这些分数相加就得到特定选择器的权重，然后就可以进行匹配。
 
 一个选择器的优先级可以说是由三个不同的分量相加，可以认为是百（ID）十（类）个（元素）——三位数的三个位数：
@@ -763,7 +780,7 @@ h2 ~ p{
 - 元素：选择器中包含元素、伪元素选择器则个位得一分。
   
 >备注： 通用选择器（*）、组合符（+、>、~、' '）和调整优先级的选择器（:where()）不会影响优先级。
-#### 继承
+### 继承
 一些设置在父元素上的 CSS 属性是可以被子元素继承的。
 
 优点|缺点
@@ -771,7 +788,7 @@ h2 ~ p{
 继承可以简化代码，降低css样式的复杂性。| 如果在网页中所有的元素都大量使用继承样式，那么判断样式的来源就会很困难。
 
 
-#### 层叠
+### 层叠
 层叠是 CSS 的一个基本特征，它是一个定义了如何合并来自多个源的属性值的算法,它通过挑选 CSS 声明来给 CSS 属性设置正确的值。是为了解决样式冲突（一个标签指定了相同样式）而存在的。
 
 步骤如下：
@@ -783,7 +800,7 @@ h2 ~ p{
 6. **出现顺序**：当两个来源层的优先权相同的选择器具有相同的优先级时，最后声明的具有最高优先级的选择器的属性值获胜。
 
 
-##### 层叠顺序
+#### 层叠顺序
 <center>
 
 | 来源 | 重要程度 |  |
@@ -806,7 +823,7 @@ h2 ~ p{
 
 对于每个属性，“获胜”的声明是来自基于权重（普通或重要）具有优先权的来源的声明。来自具有最高优先权的来源的值将被应用。如果获胜来源对于一个元素有多个属性声明，那么将比较这些竞争属性值的选择器的优先级。不同来源之间的选择器从不比较优先级。当具有优先权的来源中竞争的声明具有相同的优先级时，出现顺序才变得相关。
 
-##### 层叠层
+#### 层叠层
 
 类似于我们有六个基于来源和重要性的优先权级别，层叠层使我们能够在这些来源中创建子来源级别的优先权。
 
@@ -816,10 +833,23 @@ h2 ~ p{
 
 对于重要样式，这个顺序是相反的。所有未分层的重要样式会层叠在一起，形成一个隐式层，优先权高于所有非过渡的普通样式。未分层的重要样式的优先权低于任何重要分层样式。在同一来源内，先前声明的层中的重要样式优先于后续声明的层中的重要样式。
 
+## CSS的值与单位
+[MDN：
+CSS 的值与单位](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Values_and_units)
 
-### 盒模型
 
-#### 块级盒子（Block box）和 内联盒子（Inline box）
+### 相对单位长度
+
+单位|相对于
+---|---
+`em`|在 font-size 中使用是相对于父元素的字体大小，在其他属性中使用是相对于自身的字体大小，如 width。
+`rem`|根元素的字体大小。
+`vm`|视口宽度的 1%。
+`vh`|	视口高度的 1%。
+
+## 盒模型
+
+### 块级盒子（Block box）和 内联盒子（Inline box）
 
 **块级盒子**
   - 盒子会在内联的方向上扩展并占据父容器在该方向上的所有可用空间，在绝大数情况下意味着盒子会和父容器一样宽
@@ -835,7 +865,7 @@ h2 ~ p{
 
 我们通过对盒子`display` 属性的设置来控制盒子的外部显示类型。
 
-##### 补充：inline-block
+#### 补充：inline-block
 `display` 有一个特殊的值，它在内联和块之间提供了一个中间状态。这对于以下情况非常有用：你不希望一个项切换到新行，但希望它可以设定宽度和高度，并避免上面看到的重叠。
 
 一个元素使用 `display: inline-block`，实现我们需要的块级的部分效果：
@@ -846,7 +876,7 @@ h2 ~ p{
 但是，它不会跳转到新行，如果显式添加 width 和 height 属性，它只会变得比其内容更大。
 >外部显示类型决定盒子是块级还是内联,内部显示类型决定盒子内部元素如何布局。
 
-#### 盒模型的组成
+### 盒模型的组成
 
 <center>
   <img src="Images/image-10.png">
@@ -857,27 +887,227 @@ h2 ~ p{
 - **Border box**: 边框盒包裹内容和内边距。大小通过 `border` 相关属性设置。
 - **Margin box**: 这是最外面的区域，是盒子和其他元素之间的空白区域。大小通过 `margin` 相关属性设置。
 
-### CSS的值与单位
-[MDN：
-CSS 的值与单位](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Values_and_units)
-
-
-#### 相对单位长度
-
-单位|相对于
----|---
-`em`|在 font-size 中使用是相对于父元素的字体大小，在其他属性中使用是相对于自身的字体大小，如 width。
-`rem`|根元素的字体大小。
-`vm`|视口宽度的 1%。
-`vh`|	视口高度的 1%。
 
 
 
-### 常用CSS属性
+## CSS布局
 
-#### 文本
+### 正常布局流（normal flow）
 
-##### a.基本文本样式
+正常布局流（normal flow）是指在不对页面进行任何布局控制时，浏览器默认的 HTML 布局方式。HTML 元素完全按照源码中出现的先后次序显示。
+
+### 弹性盒子（Flexbox）
+
+#### 相关资料
+
+[彻底理解CSS Flexbox布局，看这一篇就够了！](https://juejin.cn/post/7004622232378966046)
+[flexbox-playground](example/flexbox-playground/dist/index.html)
+
+#### Flexbox布局的概念
+弹性盒子是一种用于按行或按列布局元素的一维布局方法。能够使父元素在子元素的大小未知或动态变化情况下仍然能够分配好子元素之间的间隙。元素可以膨胀以填充额外的空间，收缩以适应更小的空间。Flex布局更适合小规模的布局，可以简便、完整、响应式的实现各种页面布局。当布局涉及到不定宽度，分布对⻬的场景时，就要优先考虑弹性盒布局。
+
+<center>
+  <img src="Images/image-12.png">
+</center>
+
+#### 父元素属性
+想要使用flex布局，首先需要给父元素`display`属性指定为flex布局，`display:flexz`会生成一个块级的flex容器盒子，使用`display: inline-flex`会生成一个内联的flex容器盒子。
+
+
+
+<dl><dt>flex-flow</dt></dl>
+
+复合属性（定义主轴方向和是否允许换行），是<em><b>flex-direction</b></em>与<em><b>flex-wrap</b></em>缩写
+
+---
+<dl><dt>flex-direction</dt></dl>
+
+定义主轴方向，它决定了容器内元素（flex 项）排列方向（正方向或反方向）。
+
+**值**：
+- `row`：flex 容器的主轴被定义为与文本方向相同。主轴起点和主轴终点与内容方向相同。（默认值）
+- `row-reverse`：表现和 row 相同，但是置换了主轴起点和主轴终点。
+- `column`：flex 容器的主轴和块轴相同。主轴起点与主轴终点和书写模式的前后点相同。
+- `column-reverse`：表现和column相同，但是置换了主轴起点和主轴终点。
+  
+ <dl><dt>flex-wrap</dt></dl>
+
+指定 flex 容器内元素是否可以换行。如果允许换行，这个属性允许控制行的堆叠方向。
+
+**值**：
+- <code>nowrap</code>：flex 项被强制摆放到一行。（默认值）
+- <code>wrap</code>：flex 项被打断到多个行中。
+- <code>wrap-reverse</code>：和 wrap 的行为一样，但是 cross-start 和 cross-end 互换。
+---
+
+<br>
+<dl>
+  <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content" target="_blank">justify-content</a></dt>
+</dl>
+
+控制 flex 项在主轴上的位置。（默认是水平对齐）
+```css
+.container{
+  justify-content:flex-start |center | flex-end | space-between | space-evenly | space-around
+}
+```
+
+**值：**
+- <code> flex-start</code>：左对齐
+<center><img src="Images/flex-start.gif" alt="Images/flex-start.gif" width="90%"></center>
+    <br>
+
+- <code> center</code>：居中对齐
+<center><img src="Images/center.gif" alt="Images/center.gif" width="90%"></center>
+    <br>
+
+- <code> flex-end</code>：右对齐
+  （图略，与左对齐同理）
+  <br>
+- <code> space-between</code>：两端对齐，项目之间的间隔都相等
+  
+<center><img src="Images/space-between.gif" alt="Images/space-between.gif" width="90%"></center>
+  <br>
+
+
+- `space-evenly`
+flex 项都沿着主轴均匀分布在指定的对齐容器中。相邻 flex 项之间的间距，主轴起始位置到第一个 flex 项的间距，主轴结束位置到最后一个 flex 项的间距，都完全一样。
+<center><img src="Images/space-evenly.gif" alt="Images/space-evenly.gif" width="90%"></center>
+
+<br>
+
+- `space-around`
+  每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。
+
+<center><img src="Images/space-around.gif" alt="Images/space-around.gif" width="90%"></center>
+
+<br>
+*详见<a href="coursework/html-css/test9.html" target="_blank"> test9.html </a>和<a href="coursework/html-css/test9.css" target="_blank"> test9.css </a>
+
+
+<dl>
+  <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items" target="_blank">align-items</a></dt>
+</dl>
+
+控制 flex 项在交叉轴（默认垂直对齐）上的位置。
+
+**值：**
+
+
+- `flex-start`：以交叉轴的起点对齐。（上面或左边）
+- `align-item`：center：交叉轴的中点对齐。
+- `flex-end`：以交叉轴的终点对齐（下面或右边）。
+- `stretch`：默认值，轴线占满整个交叉轴。(未定义flex项的高度时生效)
+<center>
+  <img src="Images/image-13.png" 
+    alt="Images/image-13.png" 
+    width="90%">
+</center>
+
+
+
+- `align-item`：baseline：以元素的第一行文字的基线对齐
+<center>
+  <img src="Images/image-14.png" 
+    alt="Images/image-14.png" 
+    width="90%">
+</center>
+
+
+*详见<a href="coursework/html-css/test9-1.html" target="_blank"> test9-1.html</a>和<a href="coursework/html-css/test9-1.css" target="_blank"> test9-1.css </a>
+
+<dl>
+  <dt>align-content</dt>
+</dl>
+
+多根轴线对齐方式。如果元素只有一根轴线，该属性不起作用。（`flex-wrap`的值必须为`wrap`）
+
+
+```css
+.container {
+    align-content: flex-start | flex-end | center | space-between | space-around | stretch;
+}
+
+```
+- `flex-start`：从交叉轴开始位置填充
+- `center`：交叉轴的中点对齐
+- `flex-end`：从交叉轴结尾位置填充
+- `stretch`：默认值，轴线占满整个交叉轴。(未定义flex项的高度时生效)
+- `space-between`：与交叉轴两端对齐，轴线之前的间隔平均分布
+- `space-around`：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。
+  
+*详见<a href="coursework/html-css/test9-2.html" target="_blank"> test9-2.html</a>和<a href="coursework/html-css/test9-2.css" target="_blank"> test9-2.css </a>
+
+<br>
+
+#### 子元素属性
+
+
+<em><b>order</b></em>
+
+属性规定了弹性容器中的可伸缩项目在布局时的顺序。数值越小，排列越靠前，默认为0。
+
+**值：**
+
+<em>\< integer \></em>
+
+<br>
+
+<em><b>flex</b></em>
+
+flex属性是<em><b>flex-grow</b><em>, <em><b>flex-shrink</b></em>和<em><b>flex-basis</b></em>的简写，后两个属性可选。默认值为：<code>flex:0 1 auto</code>。使用形式如下：
+
+```css
+.item{
+    flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
+}
+```
+
+---
+
+<em><b>flex-basis</b></em>
+属性定义了flex 元素在主轴方向上的初始大小（默认是宽度）。浏览器会根据这个属性来计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。如果不使用<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-sizing"   target="_blank"><em><b>box-sizing</b></em></a>改变盒模型的话，那么这个属性就决定了 flex 元素的内容盒（content-box）的尺寸。
+
+*当一个元素同时被设置了flex-basis (值不为 `auto` ) 和 <em><b>width</b></em> (或者在 `flex-direction: column` 情况下设置了`height`) , <em><b>flex-basis</b></em> 具有更高的优先级。*
+```css
+.item {
+    flex-basis: <length> | auto|content;
+}
+```
+
+
+<em><b>flex-shrink</b></em>
+设置 flex 项主的放大比例,默认为0（即如果存在剩余空间时也不放大）。
+
+<em><b>flex-grow</b></em>
+属性定义了项目的缩小比例，即如果空间不足，该项目将缩小。不能设置负值且默认为1（等比例缩小）。
+
+
+---
+
+
+
+
+
+<br>
+
+### Grid 布局
+Flexbox 用于设计横向或纵向的布局，而 Grid 布局则被设计用于同时在两个维度上把元素按行和列排列整齐。
+
+
+### 浮动(float)
+该布局改变该元素本身和在正常布局流（normal flow）中跟随它的其他元素的行为。这一元素会浮动到左侧或右侧，并且从正常布局流 (normal flow) 中移除，这时候其他的周围内容就会在这个被设置浮动 (float) 的元素周围环绕。
+
+
+### 定位 (positioning)
+定位技术能够让我们把一个元素从它原本在正常布局流 (normal flow) 中应该在的位置移动到另一个位置。
+
+
+## 常用CSS属性
+
+### 文本
+
+#### 基本文本样式
 <dl>
   <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-decoration" target="_blank">text-decoration</a></dt>
   <dd>设置文本上的装饰性线条的外观，它是 text-decoration-line、text-decoration-color、text-decoration-style 和较新的 text-decoration-thickness 属性的缩写。text-decoration-style的取值如下：
@@ -947,7 +1177,7 @@ CSS 的值与单位](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building
   <dd>定义首行文本内容之前的缩进量。</dd>
 </dl>
 
-##### b.列表样式
+#### 列表样式
 
 <dl>
   <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/list-style-type" target="_blank">list-style-type</a></dt>
@@ -973,14 +1203,14 @@ CSS 的值与单位](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building
 
 `list-style`是`list-style-type`和`list-style-position`的简写，如`list-style: square inside;`
 
-##### c.CSS计数器
+#### CSS计数器
 CSS 计数器提供用于自定义列表计数和样式的高级工具。详见：
 
 - <code><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/@counter-style" target="_blank" >@counter-style</a></code>
 - <code><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/counter-increment" target="_blank">counter-increment</a></code>
 - <code><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/counter-reset" target="_blank">counter-reset</a></code>
 
-#### 背景
+### 背景
 <dl>
 <dt>background-color</dt>
 <dd>定义了 CSS 中任何元素的背景颜色。</dd>
@@ -1012,7 +1242,7 @@ CSS 计数器提供用于自定义列表计数和样式的高级工具。详见�
 </dd>
 </dl>
 
-#### 边框
+### 边框
 <dl>
   <dt>border-style</dt>
   <dd>用来设定元素所有边框的样式：
@@ -1029,7 +1259,7 @@ CSS 计数器提供用于自定义列表计数和样式的高级工具。详见�
   </dd>
 </dl>
 
-#### 溢出
+### 溢出
 溢出是指盒子无法容纳下内容，内容超出边界的现象。常用以下属性控制溢出
 
 <dl>
@@ -1047,7 +1277,7 @@ CSS 计数器提供用于自定义列表计数和样式的高级工具。详见�
 
 >为使 overflow 具有效果，块级水平的容器必须有一个设定的高度（height 或 max-height）或 white-space 设置为 nowrap。
 
-#### 可替换元素
+### 可替换元素
 
 <dl>
   <dt>object-fit</dt>
@@ -1061,7 +1291,7 @@ CSS 计数器提供用于自定义列表计数和样式的高级工具。详见�
   </dd>
 </dl>
 
-#### 链接
+### 链接
 
 <dl>
   <dt>cursor</dt>
@@ -1106,7 +1336,7 @@ CSS 计数器提供用于自定义列表计数和样式的高级工具。详见�
 
 
 
-## 常用技巧
+# 常用技巧
 
 <p><a id="responsive"></a></p>
 
@@ -1114,7 +1344,7 @@ CSS 计数器提供用于自定义列表计数和样式的高级工具。详见�
 
 
 
-### 响应式图片设计
+## 响应式图片设计
 
 
 **方式一：使用\<img>标签和css样式**

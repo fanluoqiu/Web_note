@@ -124,18 +124,16 @@ aside ul{
 
 aside ul li{
   list-style-type: none;
-
 }
 
 aside ul li a{
-  font-size: 2rem;
 
+  font-size: 2rem;
   font-weight: bolder;
   text-decoration: none;
   color: rgb(139, 63, 0);
   padding-left: 1rem;
   border-left:0.5rem solid  rgba(255, 81, 0, 0.103);
-
 }
 
 
