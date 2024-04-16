@@ -3,22 +3,83 @@ html, body {
     margin: 0;
     padding: 0;
     font-size: 10px;
+
 }
 
 
 body{   
-    background: linear-gradient(152deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%) ;
-    background-repeat:no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    /* height: 100%; */
+    background: white ;
 
 }
 
-article{
-    margin-left: 10vw;
-    margin-right: 10vw;
+
+
+
+.head-background{
+    background-image: url(../image/background.jpg) ;
+    background-size:cover ;
 }
+
+.personinfo-container{
+    display: grid;   
+    grid-template-areas: 
+        ". . ."
+        ". personinfo ."
+        ". . .";
+
+    grid-template-rows: 100px auto 100px;
+    grid-template-columns: 1fr auto 1fr ;
+
+}
+
+.personinfo{
+    grid-area: personinfo;
+    text-align: center;
+}
+
+.personinfo h1,p{
+    margin:0;
+    color:rgb(255, 255, 255);
+
+}
+
+
+.personinfo img{
+    max-height:200px;
+    font-size: 20px;
+    border-radius: 100%;
+    border:0.2rem solid white;
+}
+
+.personinfo h1{
+    font-size:5em;
+}
+
+.personinfo p{
+    font-size:2em;
+}
+
+
+.span{
+    height: 100px;
+}
+
+.main-layout{
+    display: grid;
+    grid-template-columns:minmax(5vw,50px) auto minmax(5vw,5px);
+    grid-template-areas: "none-L photopage none-R";
+}
+
+
+.photo{
+   grid-area:photopage;
+   /* display: grid;
+   grid-template-columns: repeat(auto-fill,150px); */
+   column-count: 4;
+   column-gap: 3px;
+}
+
+
 
 
 nav{
@@ -29,7 +90,7 @@ nav{
 nav ul{
     display: flex;
     padding: 0;
-    margin: 0 0 10vh;
+    margin: 0;
 
     flex-wrap:nowrap;
 }
@@ -45,10 +106,10 @@ nav li a {
     text-decoration: none;
     width: 100%;
     padding: 1.5rem 0;
-    font-size: 2.5rem;
+    font-size: 2.5vw;
     letter-spacing:0.3em;
     font-weight: bold;
-    color: white;
+    color: rgb(0, 0, 0);
     border-bottom: 0.1em solid rgba(165, 18, 18, 0);
 }
 
@@ -61,24 +122,7 @@ li a:active{
     font-weight:bold;
 }
 
-h1,p{
-    margin:0;
-    color:white;
 
-}
-
-h1{
-    margin-top: 2vh;
-    font-size:5em;
-
-}
-
-p{
-    font-size:1.5em;
-    padding: 0.5em;
-    border-bottom: 0.1em solid rgba(255, 255, 255, 0.904);
-    margin-bottom: 5em;
-}
 
 img{
     border-radius: 0.2em;
@@ -90,6 +134,6 @@ footer {
     display: flex;
     justify-content: center;
     padding: 5px;
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0.096);
+    color: #000000;
+    background-color: rgba(0, 0, 0, 0.055);
   }

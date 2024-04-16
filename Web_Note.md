@@ -1055,7 +1055,7 @@ flex 项都沿着主轴均匀分布在指定的对齐容器中。相邻 flex 项
 
 <em><b>flex</b></em>
 
-flex属性是<em><b>flex-grow</b><em>, <em><b>flex-shrink</b></em>和<em><b>flex-basis</b></em>的简写，后两个属性可选。默认值为：<code>flex:0 1 auto</code>。使用形式如下：
+flex属性是<em><b>flex-grow</b></em>, <em><b>flex-shrink</b></em>和<em><b>flex-basis</b></em>的简写，后两个属性可选。默认值为：<code>flex:0 1 auto</code>。使用形式如下：
 
 ```css
 .item{
@@ -1086,14 +1086,94 @@ flex属性是<em><b>flex-grow</b><em>, <em><b>flex-shrink</b></em>和<em><b>flex
 ---
 
 
-
-
-
-<br>
-
 ### Grid 布局
-Flexbox 用于设计横向或纵向的布局，而 Grid 布局则被设计用于同时在两个维度上把元素按行和列排列整齐。
+Grid布局用于同时在两个维度上把元素按行和列排列整齐。(不同于Flexbox，用于设计横向或纵向的布局)
 
+
+<center>
+  <img src="Images/image-15.png">
+</center>
+
+
+
+#### Grid 属性列表
+
+**Grid Container 属性**
+- display
+- grid-template-columns
+- grid-template-rows
+- grid-template-areas
+- grid-template
+- grid-column-gap
+- grid-row-gap
+- grid-gap
+- justify-items
+- align-items
+- justify-content
+- align-content
+- grid-auto-columns
+- grid-auto-rows
+- grid-auto-flow
+- grid
+
+
+
+**Grid Container 属性**
+
+#### Grid 属性解释
+
+<em><b>asdf</b></em>
+
+
+
+
+
+
+<em><b>grid-template-columns / grid-template-rows</b></em>
+用于设置列宽/行高。
+
+
+---
+
+
+**显式网格与隐式网格**
+<p style="font-size:0.9rem">
+显式网格是我们用 <b><em>grid-template-columns</em></b> 或 <b><em>grid-template-rows</b></em> 属性创建的。而隐式网格则是当有内容被放到网格外时才会生成的。显式网格与隐式网格的关系与弹性盒子的 main 和 cross 轴的关系有些类似。<br>
+隐式网格中生成的行/列大小是参数默认是 *auto* ，大小会根据放入的内容自动调整。当然，你也可以使用<b><em>grid-auto-rows</b></em>和<b><em>grid-auto-columns</b></em>属性手动设定隐式网格轨道的大小。<br>
+隐式网格是指`grid-template-rows/grid-template-column：auto`未被修改的行或者列。
+</p>
+
+--- 
+
+
+<em><b>gap(与grid-gap等价)</b></em>
+定义网格间隙
+
+```css
+.container {
+  gap: <grid-row-gap> <grid-column-gap>;
+}
+```
+
+<b><em>grid-column / grid-row</em></b>
+规定网格项目的尺寸以及在网格布局中的位置。
+
+<b><em>grid-area</b></em>
+用作<b><em>grid-row-start</b></em>、<b><em>grid-column-start</b></em>、<b><em>grid-row-end</b></em>、<b><em>grid-column-end</b></em>的合并简写形式，直接指定项目的位置。
+```css
+.item {
+  grid-area: <row-start> / <column-start> / <row-end> / <column-end>;
+}
+```
+
+
+<b><em>grid-template-areas</b></em>
+命名网格元素，并用 `grid-area`调用这些名字以使用该名字指定的区域。grid-template-areas属性的使用规则如下：
+- 你需要填满网格的每个格子
+- 对于某个横跨多个格子的元素，重复写上那个元素grid-area属性定义的区域名字
+- 所有名字只能出现在一个连续的区域，不能在不同的位置出现
+- 一个连续的区域必须是一个矩形
+- 使用.符号，让一个格子留空
 
 ### 浮动(float)
 该布局改变该元素本身和在正常布局流（normal flow）中跟随它的其他元素的行为。这一元素会浮动到左侧或右侧，并且从正常布局流 (normal flow) 中移除，这时候其他的周围内容就会在这个被设置浮动 (float) 的元素周围环绕。
@@ -1332,10 +1412,17 @@ CSS 计数器提供用于自定义列表计数和样式的高级工具。详见�
 
 
 
+## 常用函数
 
+### minmax() 函数
+ [minmax() 函数](https://developer.mozilla.org/zh-CN/docs/Web/CSS/minmax)产生一个长度范围，表示长度就在这个范围之中。如果最大值<最小值，则最大值被忽略并且minmax(最小值,最大值)被看成最小值。<flex> 值作为最大值时设置网格轨道的弹性系数；作为最小值时无效。
 
+### repeat()函数
+[repeat()函数](https://developer.mozilla.org/zh-CN/docs/Web/CSS/repeat)表示轨道列表的重复片段，允许以更紧凑的形式写入大量显示重复模式的列或行。可以用于 CSS Grid 属性<b><em>grid-template-columns</em></b> 和 <b><em>grid-template-rows</em></b>中。
 
-
+**auto-fill和auto-fit的区别**
+[[译] CSS Grid 之列宽自适应：auto-fill vs auto-fit](https://juejin.cn/post/6844903565463388168)
+*用 auto-fit 时，内容区会自动拉伸以便占满一整行；另一方面，使用 auto-fill 的时候，浏览器对待空列和那些有实质内容的列一样，一视同仁，允许空列占用行空间 。*
 # 常用技巧
 
 <p><a id="responsive"></a></p>
