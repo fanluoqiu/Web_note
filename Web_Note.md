@@ -1,19 +1,7 @@
----
-html:
-  embed_local_images: true
-  embed_svg: true
-  offline: false
+# Web设计
 
-print_background: true
 
-export_on_save:
-  html: true
----
-
- Web学习笔记
-<p id=head>:)</p>
-
-# 相关网站
+## 相关网站
 
 - [MDN](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web)
 - [CSS参考](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference)
@@ -21,19 +9,16 @@ export_on_save:
 - [HTML语法检查](https://validator.w3.org/)
 - [渐变背景生成](https://cssgradient.io/)
 - [网页安全字体的列表](https://www.cssfontstack.com/Tahoma)
-# HTML
 
-## 前言
-HTML是一种由不同元素组成的标记语言，应用于文本，赋予文本不同的含义（它是段落吗？它是项目列表吗？它是表格吗？），将文档结构化为逻辑块（文档是否有头部？有三列内容？有一个导航菜单？）或嵌入非文本文件（图片、音频）。元素由开始标签、内容、结束标签三部分组成。
+## HTML
 
-<center>
-    <img src="Images/grumpy-cat-small.png" 
-         width=700>
-</center>
+HTML（**H**yper**T**ext **M**arkup **L**anguage，超文本标记语言）是一种由不同元素组成的标记语言，应用于文本，赋予文本不同的含义（它是段落吗？它是项目列表吗？它是表格吗？），将文档结构化为逻辑块（文档是否有头部？有三列内容？有一个导航菜单？）或嵌入非文本文件（图片、音频）。元素由开始标签、内容、结束标签三部分组成。
 
+<img src="Images/grumpy-cat-small.png">
+<p>一个元素的结构</p>
 
-## 入门前知识
 ### 元素类型
+
 #### 块级元素
 块级元素在页面中以块的形式展现。一个块级元素出现在它前面的内容之后的新行上。任何跟在块级元素后面的内容也会出现在新的行上。块级元素通常是页面上的结构元素。例如，一个块级元素可能代表标题、段落、列表、导航菜单或页脚。一个块级元素不会嵌套在一个内联元素里面，但它可能嵌套在另一个块级元素里面。
 
@@ -78,6 +63,7 @@ HTML是一种由不同元素组成的标记语言，应用于文本，赋予文�
 
 
 ### HTML文档结构
+
 ```html
 <!doctype html>   
 <html lang="zh-CN">
@@ -89,8 +75,8 @@ HTML是一种由不同元素组成的标记语言，应用于文本，赋予文�
     <p>这是我的页面</p>
   </body>
 </html>
-
 ```
+
 `<!DOCTYPE html>`
 声明文档类型，文档类型声明类似于链接，规定了 HTML 页面必须遵从的良好规则，能自动检测错误和其他有用的东西。需要包含它才能使其他东西正常工作。`<!DOCTYPE html>` 是最短的有效文档声明。
 
@@ -123,8 +109,11 @@ HTML是一种由不同元素组成的标记语言，应用于文本，赋予文�
 ### 列表
 
 #### 无序列表
+
 无序列表用于标记列表项目顺序无关紧要的列表
+
 *例：*
+
 ```html
 <ul>
   <li>时间</li>
@@ -134,6 +123,7 @@ HTML是一种由不同元素组成的标记语言，应用于文本，赋予文�
 ```
 
 *输出：*
+
 <ul>
   <li>时间</li>
   <li>地点</li>
@@ -141,8 +131,11 @@ HTML是一种由不同元素组成的标记语言，应用于文本，赋予文�
 </ul> 
 
 #### 有序列表
+
 有序列表用于标记列表项目顺序重要的列表
+
 *例：*
+
 ```html
 <ol>
   <li>直行100米</li>
@@ -152,6 +145,7 @@ HTML是一种由不同元素组成的标记语言，应用于文本，赋予文�
 ```
 
 *输出：*
+
 <ol>
   <li>直行100米</li>
   <li>右转</li>
@@ -159,8 +153,11 @@ HTML是一种由不同元素组成的标记语言，应用于文本，赋予文�
 </ol> 
 
 #### 描述列表*
+
 描述列表常用于一个或一组专业名词、答案的解释。描述列表使用与其他列表类型不同的闭合标签——`<dl>`；此外，每一项都用`<dt>`（description term）元素闭合。每个描述都用`<dd>`（description definition）元素闭合。
+
 *例：*
+
 ```html
 <dl>
 
@@ -173,8 +170,11 @@ HTML是一种由不同元素组成的标记语言，应用于文本，赋予文�
 <dd>可以在清晨带来活力。</dd>
 
 </dl>
+
 ``` 
+
 *输出：*
+
 <dl>
 <dt>培根</dt>
 <dd>整个世界的粘合剂。</dd>
@@ -190,14 +190,17 @@ HTML是一种由不同元素组成的标记语言，应用于文本，赋予文�
 #### 强调
 
 `<em>`（emphasis）
+
 浏览器默认样式为斜体，并可以被屏幕阅读器识别，以不同的语调发出。
 
 #### 强烈的重要性
 
 `<strong>`（strong importance）
+
 浏览器默认样式为粗体，并可以被屏幕阅读器识别，以不同的语调发出。
 
 #### 斜体、粗体、下划线
+
 `<i>`
 被用来传达传统上用斜体表达的意义：外国文字，分类名称，技术术语，一种思想...
 `<b>`被用来传达传统上用粗体表达的意义：关键字，产品名称，引导句...
@@ -207,6 +210,7 @@ HTML是一种由不同元素组成的标记语言，应用于文本，赋予文�
 ## 文档与网站架构
 
 ### 文档的基本组成部分
+
 网页的外观一般由下面的版块组成：
 
 <dl>
@@ -237,39 +241,51 @@ HTML是一种由不同元素组成的标记语言，应用于文本，赋予文�
 
 ## 常用标签
 
-
-
 ### \<a>：锚元素
 
 常用属性如下：
+
 `href`
+
 声明需要跳转的目标位置。
+
 `title`
+
 跳转提示（鼠标放置在跳转文本上方时触发）
+
 `target`
+
 指定打开方式。如target="_blank"，表明在新标签页打开。
 
 >统一资源定位符（URL）与路径（path）
+
 统一资源定位符（Uniform Resource Locator，URL）是一个定义了在网络上的位置的一个文本字符串。例如，Mozilla 的简体中文主页位于 https://www.mozilla.org/zh-CN/。
 
 #### 链接到HTML网页
+
 *例一：*
+
 ```html
 <!--文本链接到bing-->
 <a href="https://www.bing.com" title="跳转到Bing" target="_blank">bing</a> 
 ```
+
 *输出：*
+
 <a href="https://www.bing.com" title="跳转到Bing" target="_blank"><b>bing</b></a>
 
 
 *例二：*
+
 ```html
 <!--用图片链接到bing-->
 <a href="https://www.bing.com" title="跳转到Bing" target="_blank">
     <img src="Images/bing-logo.png">
 </a> 
 ```
+
 *输出：*
+
 <a href="https://www.bing.com" title="跳转到Bing" target="_blank">
     <center>
         <img src="Images/bing-logo.png" width=300/>
@@ -500,21 +516,24 @@ HTML是一种由不同元素组成的标记语言，应用于文本，赋予文�
 
 
 
-# CSS
+## CSS
 
-## 前言
 CSS （Cascading Style Sheets，层叠样式表）是用来控制网页在浏览器中的显示外观的声明式语言。浏览器会根据 CSS 的样式定义将其选定的元素显示为恰当的形式。一条 CSS 的样式定义包括属性和属性值，它们共同决定网页的外观。
 
 ### 入门前知识
 
 ### 调用CSS
+
 假设现在需要调用样式表`test2_style.css`,只需在HTML中`<head>`元素内使用<Link>元素：
 
 ```html
  <link href="test2_style.css" rel="stylesheet">
 ```
+
 属性 `rel`让浏览器知道有 CSS 文档存在，属性 `href` 指定 CSS 文件的位置。
+
 ### CSS的语法
+
 语法由一个选择器（selector）起头。它选择了我们将要用来添加样式的 HTML 元素。在这个例子中我们为一级标题（主标题`<h1>` 添加样式,在大括号内部定义一个或多个形式为`属性：值`的声明。
 *例1：* <a id="CSS的语法"></a>
 ```css
@@ -542,15 +561,19 @@ h1{
 ```
 
 *例1输出：*
+
 <center>
   <img src="Images/image-4.png">
 </center>
 
 ## 选择器分类
+
 ### 元素选择器
+
 指直接匹配 HTML 元素的选择器（见<a href="#CSS的语法">例1</a>）
 
 ### 伪元素选择器
+
 其表现为往标记文本中加入全新的 HTML 元素一样，和伪类相似。
 常用伪元素：
 
@@ -558,6 +581,7 @@ h1{
 
 
 ### 类选择器
+
 使用元素选择器会导致同一个元素下的内容都一个样式，不能满足多样化设计，我们可以给 HTML 元素加个类名（class），再选中那个类名：
 
 *例2：* <a id="CSS的语法例2"></a>
@@ -1179,8 +1203,8 @@ Grid布局用于同时在两个维度上把元素按行和列排列整齐。(不
 该布局改变该元素本身和在正常布局流（normal flow）中跟随它的其他元素的行为。这一元素会浮动到左侧或右侧，并且从正常布局流 (normal flow) 中移除，这时候其他的周围内容就会在这个被设置浮动 (float) 的元素周围环绕。
 
 
-### 定位 (positioning)
-定位技术能够让我们把一个元素从它原本在正常布局流 (normal flow) 中应该在的位置移动到另一个位置。
+### 定位 (position)
+`position` 属性用于指定一个元素在文档中的定位方式。top，right，bottom 和 left 属性则决定了该元素的最终位置。
 
 
 ## 常用CSS属性

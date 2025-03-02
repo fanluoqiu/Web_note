@@ -1,0 +1,109 @@
+p{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20px;
+    line-height: 1.5em;
+    padding:0 2em ;
+
+}
+
+
+
+a{
+    text-decoration:none;
+    color: inherit;
+
+}
+
+
+
+
+
+
+
+a[href^="http"] {
+    padding-left: 0.5em;
+    margin-right: 1em;
+    position: relative;  /*相对定位*/
+    color: rgb(0, 4, 230);
+
+    display: inline-block;  
+
+
+
+    transition: all .15s cubic-bezier(.2, 0, 0, 1);
+
+}
+
+a[href^="http"]:hover{
+    color: rgb(78, 0, 0);
+
+}
+
+a[href^="http"]::after{
+    content: "";
+    position:absolute;
+    display: inline;  
+
+    width: 0.8em; /* 稍微增大，提高可见性 */
+    height: 0.8em;
+    top:0;
+    background: url(../html-css/ico/link.svg) no-repeat center / contain;
+
+
+    transition: all .15s cubic-bezier(.2, 0, 0, 1);
+
+}
+
+
+
+
+a[href^="http"]:hover::after{
+    width: 1em; 
+    height: 1em;
+    top: 0.25em;
+    background: url(../html-css/ico/link_hover.svg) no-repeat center / contain;
+
+}
+
+
+
+
+
+
+
+
+a:not([href^="http"]){
+    padding: 0.2em 0.3em;
+    position: relative;  /*相对定位*/
+
+
+    transition: all .3s cubic-bezier(.2, 0, 0, 1);
+
+    z-index: 1;
+
+}
+
+
+a:not([href^="http"])::after{
+    content: '';
+    display: block;
+    height: 0.1em;
+    position: absolute;
+    bottom: 0;
+    right: 0.3em;
+    left: 0.3em; 
+    background-color:  rgb(0, 190, 149);
+    transition: all .2s cubic-bezier(.2, 0, 0, 1);
+    transform-origin: bottom center;
+    z-index: -1;
+}
+
+a:not([href^="http"]):hover {
+    color: #ffffff;
+}
+
+a:not([href^="http"]):hover::after{
+    right: 0.2em;
+    left:  0.2em;
+    height: 100%;
+}

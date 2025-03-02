@@ -1,0 +1,76 @@
+h1,
+p{
+    margin: 0;
+}
+
+
+
+.center{
+    display: flex;
+
+    height: 100vh;
+    margin-left: 50px;
+    margin-right: 50px;
+
+    align-items:center;
+    justify-content: center;
+}
+
+.article{
+
+    display: grid;
+    grid-template-columns:auto minmax(550px,610px);
+    grid-template-areas:    'pic wor'
+                             'pic-mess .';
+    align-items: center;
+    
+    border-radius: 0.5rem;
+    padding: 5rem;
+    background-color: white;
+    box-shadow: 0px 0px 2rem rgba(0, 0, 0, 0.062);
+}
+
+
+.article img{
+    grid-area: pic;
+    max-width:400px;
+    min-width: 300px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+
+
+}
+
+
+.article .wor{
+    grid-area: wor;
+    line-height:  1.5;
+    margin-left: 2rem;
+
+}
+
+.article h1{
+    width: 12rem;
+    font-size: 3rem;
+    border-bottom: solid rgb(12, 0, 68) 2px;
+
+}
+
+.article p{
+    overflow:hidden;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+}
+
+
+.pic-mess{
+    display: flex;
+    justify-content:space-between ;
+   
+}
+
+
+.pic-mess p{
+    font-size: 1rem;
+}

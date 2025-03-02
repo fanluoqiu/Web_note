@@ -1,0 +1,187 @@
+html{
+    font-size: 10px;
+    
+}
+
+body{
+    font-size: 1.6rem;
+}
+
+
+main{
+    margin:0  50px;
+}
+
+
+  
+  
+.main-wrapper {  
+    display: grid;
+    grid-template-columns: minmax(200px, 1fr) minmax(700px,1000px) minmax(200px,1fr);
+    grid-template-rows:300px 400px auto;
+    gap: 0px 20px;
+    grid-template-areas:
+      ". main toc"
+      "sidebar main ."
+      ". main .";
+
+    position:relative;
+}
+
+.main-sidebar{
+    grid-area: sidebar;
+    /* background-color: #ffa08c; */
+    overflow-x: hidden;
+    position: sticky;
+    top: 0;
+}
+
+
+
+.main-content{
+    grid-area: main;
+    /* background-color: #fffd8c; */
+    padding: 0 1em;
+}
+
+.main-toc{
+    grid-area: toc;
+    /* background-color: #e88cff; */
+    position: sticky;
+    top: 0;
+}
+
+
+@media screen and (max-width: 1300px){
+    main{
+        margin: 0;
+    }
+
+    .main-wrapper {  
+        display: grid;
+        grid-template-columns: 200px auto;
+        grid-template-rows:30rem 40rem auto;
+        gap: 0px 10px;
+        grid-template-areas:
+          "sidebar main"
+          "toc main"
+          ". main";
+    }
+
+    /* 🔹 让 sidebar & toc 固定在左侧，且上下排列 */
+    .main-sidebar,
+    .main-toc {
+        position: fixed;   /* 固定在页面上 */
+        left: 0;           /* 靠左 */
+        width:200px;  /* 让它们的宽度随 grid 变化（大约1/3屏幕宽度） */
+
+    }
+    /* 🔹 sidebar 放在上面 */
+    .main-sidebar {
+        top: 0;
+        height: 60vh;  /* 让 sidebar 占据 40% 高度 */
+        /* background-color: #ffa08c; */
+        overflow-y: auto; /* 允许滚动 */
+    }
+
+    /* 🔹 toc 放在 sidebar 下面 */
+    .main-toc {
+        top: 60vh;  /* 从 sidebar 下面开始 */
+        height: 40vh; /* 占剩下的 60% 高度 */
+        /* background-color: #e88cff; */
+        overflow-y: auto; /* 允许滚动 */
+    }
+    .main-content{
+        width: auto;
+    }
+
+
+}
+
+
+
+
+
+
+
+
+p{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    /* font-size: 16px; */
+    line-height: 1.6em;
+
+}
+
+
+
+a{
+    text-decoration:none;
+    color: inherit;
+
+}
+a[href^="http"] {
+    padding-left: 0.5em;
+    margin-right: 1em;
+    position: relative;  /*相对定位*/
+    color: rgb(0, 4, 230);
+
+    display: inline-block;  
+
+    transition: all .15s cubic-bezier(.2, 0, 0, 1);
+}
+a[href^="http"]:hover{
+    color: rgb(78, 0, 0);
+
+}
+a[href^="http"]::after{
+    content: "";
+    position:absolute;
+    display: inline;  
+
+    width: 0.8em; /* 稍微增大，提高可见性 */
+    height: 0.8em;
+    top:0;
+    background: url(../html-css/ico/link.svg) no-repeat center / contain;
+
+
+    transition: all .15s cubic-bezier(.2, 0, 0, 1);
+
+}
+a[href^="http"]:hover::after{
+    width: 1em; 
+    height: 1em;
+    top: 0.25em;
+    background: url(../html-css/ico/link_hover.svg) no-repeat center / contain;
+
+}
+a:not([href^="http"]){
+    padding: 0.2em 0.3em;
+    position: relative;  /*相对定位*/
+
+
+    transition: all .3s cubic-bezier(.2, 0, 0, 1);
+
+    z-index: 1;
+
+}
+a:not([href^="http"])::after{
+    content: '';
+    display: block;
+    height: 0.1em;
+    position: absolute;
+    bottom: 0;
+    right: 0.3em;
+    left: 0.3em; 
+    background-color:  rgb(0, 190, 149);
+    transition: all .2s cubic-bezier(.2, 0, 0, 1);
+    transform-origin: bottom center;
+    z-index: -1;
+}
+a:not([href^="http"]):hover {
+    color: #ffffff;
+}
+a:not([href^="http"]):hover::after{
+    right: 0.2em;
+    left:  0.2em;
+    height: 100%;
+}
